@@ -1,45 +1,78 @@
-// Create a web server
-//
-var http = require('http');
-var url = require('url');
-var fs = require('fs');
-var qs = require('querystring');
-var comments = [];
+// Create web server
+// 1. Import express
+const express = require('express');
+// 2. Create an express server
+const app = express();
+// 3. Define a port number
+const port = 3000;
+// 4. Define a route
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});
+// 5. Start the server
+app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
+});
+// 6. Run the server
+// node comments.js
+// 7. Open the browser and go to http://localhost:3000
+// 8. To stop the server, press Ctrl + C
 
-var server = http.createServer(function(req, res) {
-  // Parse the request containing file name
-  var pathname = url.parse(req.url).pathname;
-
-  if (pathname === '/') {
-    fs.readFile('index.html', function(err, data) {
-      res.writeHead(200, { 'Content-Type': 'text/html' });
-      res.write(data);
-      res.end();
-    });
-  } else if (pathname === '/post') {
-    var body = '';
-    req.on('data', function(data) {
-      body += data;
-      if (body.length > 1e6) {
-        req.connection.destroy();
-      }
-    });
-    req.on('end', function() {
-      var post = qs.parse(body);
-      comments.push(post.comment);
-      res.writeHead(302, { 'Location': '/' });
-      res.end();
-    });
-  } else if (pathname === '/comments') {
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.write(JSON.stringify(comments));
-    res.end();
-  } else {
-    res.writeHead(404, { 'Content-Type': 'text/html' });
-    res.write('404 Not found');
-    res.end();
-  }
+// Path: comments.js
+// Create a simple web server
+const express = require('express');
+const app = express();
+const port = 3000;
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});
+app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
 });
 
-server.listen(8080);
-console.log('Server running at http://
+// Path: comments.js
+// Create a simple web server
+const express = require('express');
+const app = express();
+const port = 3000;
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});
+app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
+});
+
+// Path: comments.js
+// Create a simple web server
+const express = require('express');
+const app = express();
+const port = 3000;
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});
+app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
+});
+
+// Path: comments.js
+// Create a simple web server
+const express = require('express');
+const app = express();
+const port = 3000;
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});
+app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
+});
+
+// Path: comments.js
+// Create a simple web server
+const express = require('express');
+const app = express();
+const port = 3000;
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});
+app.listen(port, () => {
+    console.log(`Server is running at http://
